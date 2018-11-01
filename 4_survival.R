@@ -1,3 +1,8 @@
+setwd("~/survival-titanic/")
+
+titanic <- s3readRDS(paste0("s3://", package_s3_bucket, "/", package_s3_key, "/titanic.rds"))
+test <- s3readRDS(paste0("s3://", package_s3_bucket, "/", package_s3_key, "/test.rds"))
+
 gb1 <- filter(titanic,train) %>%
   select(.,age,SibSp,Parch,Fare,Sex,Pclass,
          Title,Embarked,A,B,C,D,E,F,ncabin,PC,STON,oe,AGE,Survived)%>%
@@ -11,4 +16,9 @@ gb1m <- gbm(Survived ~ .,
             data=gb1,
             n.trees=10000)
 gbm.perf(gb1m)
-saveRDS(gb1m, "data/gb1m.rds")
+s3saveRDS(gb1m, paste0("s3://", package_s3_bucket, "/", package_s3_key, "/model.rds"))
+
+rm(gb1)
+rm(gb1m)
+rm(test)
+rm(titanic)

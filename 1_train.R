@@ -1,10 +1,12 @@
 library(dplyr)
 library(gbm)
+library(aws.s3)
 
 set.seed(4321)
 
-setwd("~/titanic/")
-titanic <- read.csv('data/train.csv') %>%
+setwd("~/survival-titanic/")
+
+titanic <- aws.s3::s3read_using(read.csv, object = paste0("s3://", package_s3_bucket, "/", package_s3_key, "/train.csv")) %>%
     mutate(.,Pclass=factor(Pclass),
                     Survived=factor(Survived),
                     age=ifelse(is.na(Age),35,Age),
@@ -29,4 +31,5 @@ titanic <- read.csv('data/train.csv') %>%
                             size=891,
                             replace=TRUE, 
                             prob=c(.9,.1)   ) )
-saveRDS(titanic, "data/titanic.rds")
+s3saveRDS(titanic, paste0("s3://", package_s3_bucket, "/", package_s3_key, "/titanic.rds"))
+rm(titanic)

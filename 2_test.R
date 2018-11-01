@@ -1,9 +1,9 @@
 library(dplyr)
 library(gbm)
 
-setwd("~/titanic/")
-
-test <- read.csv('data/test.csv') %>%
+setwd("~/survival-titanic/")
+titanic <- s3readRDS(paste0("s3://", package_s3_bucket, "/", package_s3_key, "/titanic.rds"))
+test <- aws.s3::s3read_using(read.csv, object = paste0("s3://", package_s3_bucket, "/", package_s3_key, "/test.csv")) %>%
   mutate(.,
          Embarked=factor(Embarked,levels=levels(titanic$Embarked)),
          Pclass=factor(Pclass),
@@ -28,7 +28,10 @@ test <- read.csv('data/test.csv') %>%
          oe=factor(ifelse(!is.na(cn),cn%%2,-1))
   )
 test$Fare[is.na(test$Fare)]<- median(titanic$Fare)
-saveRDS(test, "data/test.rds")
+s3saveRDS(test, paste0("s3://", package_s3_bucket, "/", package_s3_key, "/test.rds"))
 input = within(test, rm(cn))
 input = input[13,]
-saveRDS(input, "data/input.rds")
+s3saveRDS(input, paste0("s3://", package_s3_bucket, "/", package_s3_key, "/input.rds"))
+rm(titanic)
+rm(test)
+rm(input)
