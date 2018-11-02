@@ -1,0 +1,27 @@
+[
+  {
+    "PassengerId": 904,
+    "Pclass": 1,
+    "Name": "Snyder, Mrs. John Pillsbury (Nelle Stevenson)",
+    "Sex": "female",
+    "SibSp": 1,
+    "Parch": 0,
+    "Ticket": 21228,
+    "Fare": 82.2667,
+    "Cabin": "B45",
+    "Embarked": "S",
+    "age": 23,
+    "Title": "Mrs",
+    "A":false,
+    "B":true,
+    "C":false,
+    "D":false,
+    "E":false,
+    "F":false,
+    "ncabin": 3,
+    "PC":false,
+    "STON":false,
+    "oe": 1,
+    "AGE": 23
+  }
+]
