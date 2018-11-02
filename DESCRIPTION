@@ -1,0 +1,9 @@
+Package: serveRlessModel
+Title: ServeRLess R Model Package example
+Version: 1.0.0
+Authors@R: person("Andrew", "Conklin", email = "aconklin@origent.com", role = c("aut", "cre"))
+Description: This is an example GBM Survival model predicting Titanic passenger deaths.
+Imports: gbm
+License: Origent Data Science Proprietary
+RoxygenNote: 6.0.1.9000
+Encoding: UTF-8

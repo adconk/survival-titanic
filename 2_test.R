@@ -1,5 +1,6 @@
 library(dplyr)
 library(gbm)
+library(aws.s3)
 
 setwd("~/survival-titanic/")
 titanic <- s3readRDS(paste0("s3://", package_s3_bucket, "/", package_s3_key, "/titanic.rds"))
