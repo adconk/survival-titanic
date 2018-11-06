@@ -3,25 +3,19 @@ title: "AWS Lambda: API Deployment"
 output: html_notebook
 ---
 
-This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
-
-
-```{r}
-library(reticulate)
-use_python("/usr/bin/python3", required = TRUE)
-awsrpy <- import("serveRless")
-```
-
-When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Cmd+Shift+K* to preview the HTML file). 
-
-The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+Python Testing
 
 ```{python, engine.path = '/usr/bin/python3', prompt = TRUE}
 
 import serveRless
 builder_instance = serveRless.serveRless()
 #builder_instance.create("adc_test")
-builder_instance.terminate()
+#builder_instance.terminate()
 
 ```
 
+R Testing
+
+```{r}
+
+```
