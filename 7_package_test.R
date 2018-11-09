@@ -12,6 +12,6 @@ library(exampleModel)
 library(jsonlite)
 library(aws.s3)
 
-request = jsonlite::fromJSON(txt = 'package_test.json')
+request = jsonlite::fromJSON(txt = '7_package_test.json')
 print(exampleModel::get_prediction(request))
 rm(request)
