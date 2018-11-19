@@ -1,5 +1,5 @@
 #AWS
-package_s3_bucket <<- "origent-servermore-demo"
+package_s3_bucket <<- "origent-public-demo"
 package_s3_key <<- "survival-titanic"
 
 #R
